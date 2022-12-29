@@ -1,0 +1,9 @@
+dotenv: .env
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.8.0
+  - aave/aave-v3-core@1.17.0
+compiler:
+  solc:
+    remappings:
+      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.8.0'
+      - '@aave=aave/aave-v3-core@1.17.0'
