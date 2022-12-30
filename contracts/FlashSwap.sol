@@ -1,17 +1,28 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@aave/contracts/flashloan/interfaces/IFlashLoanSimpleReceiver.sol";
+import "@aave/contracts/interfaces/IPoolAddressesProvider.sol";
+import "@aave/contracts/interfaces/IPool.sol";
 
 contract FlashSwap {
 
-    constructor() {}
+    IPool public POOL;
+    IPoolAddressesProvider public ADDRESSES_PROVIDER;
 
-    function flashSwap(address _token, uint256 _amount) external {
-        IFlashLoanSimpleReceiver receiver = IFlashLoanSimpleReceiver(address(this));
-        IERC20(_token).approve(address(receiver), _amount);
-        receiver.executeOperation(_token, _amount, 0);
+    constructor(IPoolAddressesProvider provider) {
+        ADDRESSES_PROVIDER = provider;
+        POOL = IPool(provider.getPool());
     }
+
+
+    function executeTrade(address _token, uint256 _amount) external {
+
+        //receiver.executeOperation(_asset, _amount, _premium, _initiator, _params);
+    }
+
 
     /**
     * @notice Executes an operation after receiving the flash-borrowed asset
