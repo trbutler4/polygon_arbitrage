@@ -19,8 +19,15 @@ contract FlashSwap {
 
 
     function executeTrade(address _token, uint256 _amount) external {
+        address receiver = address(this); // receive funds to this contract
+        address token = _token; // token to swap
+        uint256 amount = _amount; // amount to swap
+        bytes memory params = ""; // params for the receiver contracts
+        uint16 referralCode = 0; // referral code for the flash loan (not currently active)
 
-        //receiver.executeOperation(_asset, _amount, _premium, _initiator, _params);
+        // get flah loan
+        POOL.flashLoanSimple(receiver, token, amount, params, referralCode);
+
     }
 
 
@@ -43,7 +50,13 @@ contract FlashSwap {
     bytes calldata params
     ) external returns (bool) {
         // do something with the borrowed tokens
+
+
+
         // repay the borrowed tokens + premium
+        uint amountOwed = amount + premium;
+        IERC20(asset).approve(address(POOL), amountOwed);
+
         return true;
     }
 

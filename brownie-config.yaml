@@ -7,3 +7,5 @@ compiler:
     remappings:
       - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.8.0'
       - '@aave=aave/aave-v3-core@1.17.0'
+addresses:
+  MUMBAI_POOL_ADDRESS_PROVIDER: "0x5343b5bA672Ae99d627A1C87866b8E53F47Db2E6"
