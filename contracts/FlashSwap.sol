@@ -11,10 +11,12 @@ contract FlashSwap {
 
     IPool public POOL;
     IPoolAddressesProvider public ADDRESSES_PROVIDER;
+    Address public OWNER;
 
     constructor(IPoolAddressesProvider provider) {
         ADDRESSES_PROVIDER = provider;
         POOL = IPool(provider.getPool());
+        OWNER = msg.sender;
     }
 
 
@@ -25,9 +27,20 @@ contract FlashSwap {
         bytes memory params = ""; // params for the receiver contracts
         uint16 referralCode = 0; // referral code for the flash loan (not currently active)
 
-        // get flah loan
+        // get flash loan
         POOL.flashLoanSimple(receiver, token, amount, params, referralCode);
 
+    }
+
+
+    function fundContract(address _token, uint256 _amount) external {
+        IERC20(_token).transferFrom(msg.sender, address(this), _amount);
+    }
+
+
+    function withdrawFunds(address _token, uint256 _amount) external {
+        require(msg.sender == OWNER, "Only owner can withdraw funds");
+        IERC20(_token).transfer(msg.sender, _amount);
     }
 
 
@@ -50,7 +63,6 @@ contract FlashSwap {
     bytes calldata params
     ) external returns (bool) {
         // do something with the borrowed tokens
-
 
 
         // repay the borrowed tokens + premium
