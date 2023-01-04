@@ -11,7 +11,7 @@ contract FlashSwap {
 
     IPool public POOL;
     IPoolAddressesProvider public ADDRESSES_PROVIDER;
-    Address public OWNER;
+    address public OWNER;
 
     constructor(IPoolAddressesProvider provider) {
         ADDRESSES_PROVIDER = provider;
@@ -33,7 +33,7 @@ contract FlashSwap {
     }
 
 
-    function fundContract(address _token, uint256 _amount) external {
+    function fund(address _token, uint256 _amount) external {
         IERC20(_token).transferFrom(msg.sender, address(this), _amount);
     }
 
@@ -71,6 +71,5 @@ contract FlashSwap {
 
         return true;
     }
-
 
 }
