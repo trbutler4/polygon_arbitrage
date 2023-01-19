@@ -7,3 +7,5 @@ reports/
 .venv
 .vscode
 node_modules/
+.scratch
+cache/
