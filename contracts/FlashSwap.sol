@@ -12,6 +12,8 @@ contract FlashSwap {
     IPool public POOL;
     IPoolAddressesProvider public ADDRESSES_PROVIDER;
     address public OWNER;
+    address TOKEN0;
+    address TOKEN1;
 
     constructor(IPoolAddressesProvider provider) {
         ADDRESSES_PROVIDER = provider;
@@ -20,15 +22,16 @@ contract FlashSwap {
     }
 
 
-    function executeTrade(address _token, uint256 _amount) external {
+    function executeArbitrage(address _token0, address _token1, uint256 _amount) external {
         address receiver = address(this); // receive funds to this contract
-        address token = _token; // token to swap
+        TOKEN0 = _token0; // token to swap from (what gets borrowed)
+        TOKEN1 = _token1; // token to swap to (used for arb)
         uint256 amount = _amount; // amount to swap
         bytes memory params = ""; // params for the receiver contracts
         uint16 referralCode = 0; // referral code for the flash loan (not currently active)
 
         // get flash loan
-        POOL.flashLoanSimple(receiver, token, amount, params, referralCode);
+        POOL.flashLoanSimple(receiver, TOKEN0, amount, params, referralCode);
 
     }
 
