@@ -221,6 +221,41 @@
       "artifacts": [
         "DataTypes"
       ]
+    },
+    "/home/trbiv/eth/MEV/polygon_arbitrage/contracts/interfaces/IWrappedTokenGatewayV3.sol": {
+      "lastModificationDate": 1674103949249,
+      "contentHash": "accd24c796d36485ad886051812f6aa2",
+      "sourceName": "contracts/interfaces/IWrappedTokenGatewayV3.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "IWrappedTokenGatewayV3"
+      ]
     }
   }
 }

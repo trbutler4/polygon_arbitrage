@@ -1,5 +1,6 @@
-const { networkConfig } = require("./helper-hardhat-config");
 const hre = require("hardhat");
+const { networkConfig } = require("../helper-config");
+
 
 async function main() {
     // deploy contract
