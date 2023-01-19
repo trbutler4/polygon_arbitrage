@@ -3,11 +3,11 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@aave/contracts/flashloan/interfaces/IFlashLoanSimpleReceiver.sol";
-import "@aave/contracts/interfaces/IPoolAddressesProvider.sol";
-import "@aave/contracts/interfaces/IPool.sol";
+import "@aave/core-v3/contracts/flashloan/interfaces/IFlashLoanSimpleReceiver.sol";
+import "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
+import "@aave/core-v3/contracts/interfaces/IPool.sol";
 
-contract FlashSwap {
+contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
 
     IPool public POOL;
     IPoolAddressesProvider public ADDRESSES_PROVIDER;
@@ -15,9 +15,9 @@ contract FlashSwap {
     address TOKEN0;
     address TOKEN1;
 
-    constructor(IPoolAddressesProvider provider) {
-        ADDRESSES_PROVIDER = provider;
-        POOL = IPool(provider.getPool());
+    constructor(address _poolAddressesProvider) {
+        ADDRESSES_PROVIDER = IPoolAddressesProvider(_poolAddressesProvider);
+        POOL = IPool(ADDRESSES_PROVIDER.getPool());
         OWNER = msg.sender;
     }
 

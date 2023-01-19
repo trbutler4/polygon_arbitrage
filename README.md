@@ -1,3 +1,3 @@
 WORK IN PROGRESS
 
-Arbitrage using aave and quickswap on polygon
+flash loan arbitrage using aave, uniswap, and sushiswap
