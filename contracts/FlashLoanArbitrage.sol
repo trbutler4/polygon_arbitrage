@@ -44,10 +44,13 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
     }
 
 
-    function fund(address _token, uint256 _amount) external {
-        IERC20(_token).transferFrom(msg.sender, address(this), _amount);
+    function deposit() public payable {
+        require(msg.value > 0, "Cannot deposit 0 or less wei");
     }
 
+    function depositToken(address _token, uint256 _amount) public {
+        require(IERC20(_token).transferFrom(msg.sender, address(this), _amount), "Deposit Failed");
+    }
 
     function withdrawFunds(address _token, uint256 _amount) external {
         require(msg.sender == OWNER, "Only owner can withdraw funds");
@@ -55,7 +58,8 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
     }
 
     // TODO: test this function
-    function uniswapSwapExactInputSingle(address _tokenIn, address _tokenOut, uint256 _amount) internal returns (uint256 amountOut) {
+    function uniswapSwapExactInputSingle(address _tokenIn, address _tokenOut, uint256 _amount) external returns (uint256 amountOut) {
+
         // approve router to spend tokenIn
         TransferHelper.safeApprove(_tokenIn, address(UNISWAP_SWAP_ROUTER), _amount);
 
@@ -106,8 +110,8 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
         // For exact output swaps, the amountInMaximum may not have all been spent.
         // If the actual amount spent (amountIn) is less than the specified maximum amount, we must refund the msg.sender and approve the swapRouter to spend 0.
         if (amountIn < _amountInMaximum) {
-            TransferHelper.safeApprove(DAI, address(UNISWAP_SWAP_ROUTER), 0);
-            TransferHelper.safeTransfer(DAI, msg.sender, _amountInMaximum - amountIn);
+            TransferHelper.safeApprove(_tokenIn, address(UNISWAP_SWAP_ROUTER), 0);
+            TransferHelper.safeTransfer(_tokenIn, msg.sender, _amountInMaximum - amountIn);
         }
     }
 
@@ -130,7 +134,7 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
     bytes calldata params
     ) external returns (bool) {
         // swap token0 for token1 on uniswap
-        uniswapSwapExactInputSingle(TOKEN0, TOKEN1, amount)(amount); // swapping all we have borrowed
+        this.uniswapSwapExactInputSingle(TOKEN0, TOKEN1, amount); // swapping all we have borrowed
 
         // TODO: swap token1 back to token0 on sushiswap
 
