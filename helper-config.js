@@ -7,6 +7,7 @@ const networkConfig = {
         daiToken: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
         aavePoolAddressesProvider: '0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb',
         uniswapSwapRouter: "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+        sushiswapSwapRouter: "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"
     },
     137: {
         name: 'polygon'
