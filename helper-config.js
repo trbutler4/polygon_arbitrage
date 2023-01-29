@@ -10,11 +10,15 @@ const networkConfig = {
         sushiswapSwapRouter: "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"
     },
     137: {
-        name: 'polygon'
+        name: 'polygon-mainnet',
     },
     80001: {
         name: 'polygon-mumbai',
-        wmaticToken: '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889'
+        maticToken: '0xFb4a42f442E53C95Bb30Dc6505E7f39bb121EbF2',
+        wmaticToken: '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889',
+        aavePoolAddressesProvider: "0xeb7A892BB04A8f836bDEeBbf60897A7Af1Bf5d7F",
+        uniswapSwapRouter: "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+        sushiswapSwapRouter: "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"
     }
 };
 

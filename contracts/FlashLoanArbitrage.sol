@@ -64,6 +64,9 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
     // TODO: test this function
     function uniswapSwap(address _tokenIn, address _tokenOut, uint256 _amount) external returns (uint256 amountOut) {
 
+        // transfer tokens to this contract
+        TransferHelper.safeTransfer(_tokenIn, address(this), _amount);
+
         // approve router to spend tokenIn
         TransferHelper.safeApprove(_tokenIn, address(UNISWAP_SWAP_ROUTER), _amount);
 
@@ -85,16 +88,23 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
     }
 
     function sushiswapSwap(address _tokenIn, address _tokenOut, uint _amount) external returns (uint256[] memory amounts) {
+
+        // transfer tokens to this contract
+        TransferHelper.safeTransfer(_tokenIn, address(this), _amount);
+
+        // approve router to spend _tokenIn
+        TransferHelper.safeApprove(_tokenIn, address(SUSHISWAP_SWAP_ROUTER), _amount);
+
         address[] memory path = new address[](2);
         path[0] = _tokenIn;
         path[1] = _tokenOut;
 
         amounts = SUSHISWAP_SWAP_ROUTER.swapExactTokensForTokens(
-           _amount, 
+           _amount,
            0, // amountOutMin
            path,
            address(this), // receive to this contract
-           0 // deadline 
+           0 // deadline
         );
     }
 
@@ -121,7 +131,7 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
         uint256 swap1Amount = this.uniswapSwap(TOKEN0, TOKEN1, amount); // swapping all we have borrowed
 
         // TODO: swap token1 back to token0 on sushiswap
-        this.sushiswapSwap(TOKEN1, TOKEN0, swap1Amount); // swap all that we got from uniswap 
+        this.sushiswapSwap(TOKEN1, TOKEN0, swap1Amount); // swap all that we got from uniswap
 
         // repay the borrowed tokens + premium
         uint amountOwed = amount + premium;

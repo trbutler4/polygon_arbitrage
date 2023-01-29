@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/trbiv/eth/MEV/polygon_arbitrage/contracts/FlashLoanArbitrage.sol": {
-      "lastModificationDate": 1674530509191,
-      "contentHash": "7fc385ee3435ecfcb465eeee838d34da",
+      "lastModificationDate": 1674615587035,
+      "contentHash": "0d41554e0c747d07cfbcc2035febacb1",
       "sourceName": "contracts/FlashLoanArbitrage.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -34,7 +34,8 @@
         "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
         "@aave/core-v3/contracts/interfaces/IPool.sol",
         "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
-        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol"
+        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
+        "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
@@ -76,6 +77,43 @@
       ],
       "artifacts": [
         "IERC20"
+      ]
+    },
+    "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol": {
+      "lastModificationDate": 1674255498985,
+      "contentHash": "ffd42687b3db01d30c24213d961fcf9f",
+      "sourceName": "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
+      ],
+      "versionPragmas": [
+        ">=0.7.5"
+      ],
+      "artifacts": [
+        "ISwapRouter"
       ]
     },
     "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@aave/core-v3/contracts/interfaces/IPool.sol": {
@@ -189,113 +227,6 @@
         "IFlashLoanSimpleReceiver"
       ]
     },
-    "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol": {
-      "lastModificationDate": 1674093598764,
-      "contentHash": "03302610532390610829fcf0c6a876c5",
-      "sourceName": "@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol",
-      "solcConfig": {
-        "version": "0.8.17",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "DataTypes"
-      ]
-    },
-    "/home/trbiv/eth/MEV/polygon_arbitrage/contracts/interfaces/IWrappedTokenGatewayV3.sol": {
-      "lastModificationDate": 1674103949249,
-      "contentHash": "accd24c796d36485ad886051812f6aa2",
-      "sourceName": "contracts/interfaces/IWrappedTokenGatewayV3.sol",
-      "solcConfig": {
-        "version": "0.8.17",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.10"
-      ],
-      "artifacts": [
-        "IWrappedTokenGatewayV3"
-      ]
-    },
-    "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol": {
-      "lastModificationDate": 1674255498985,
-      "contentHash": "ffd42687b3db01d30c24213d961fcf9f",
-      "sourceName": "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
-      "solcConfig": {
-        "version": "0.8.17",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
-      ],
-      "versionPragmas": [
-        ">=0.7.5"
-      ],
-      "artifacts": [
-        "ISwapRouter"
-      ]
-    },
     "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol": {
       "lastModificationDate": 1674255500533,
       "contentHash": "f0616d1842da6584f8454c9b323d777f",
@@ -333,6 +264,43 @@
         "TransferHelper"
       ]
     },
+    "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol": {
+      "lastModificationDate": 1674606243960,
+      "contentHash": "3fd36426274a5b35f7e702f87ba08a8e",
+      "sourceName": "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IUniswapV2Router01.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router02"
+      ]
+    },
     "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
       "lastModificationDate": 1674255499433,
       "contentHash": "a8ba2d37b0107911ae0e3b0e123cbd83",
@@ -366,6 +334,111 @@
       ],
       "artifacts": [
         "IUniswapV3SwapCallback"
+      ]
+    },
+    "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol": {
+      "lastModificationDate": 1674093598764,
+      "contentHash": "03302610532390610829fcf0c6a876c5",
+      "sourceName": "@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "DataTypes"
+      ]
+    },
+    "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol": {
+      "lastModificationDate": 1674606243960,
+      "contentHash": "95d8729b2c698dc663322167b3c085fe",
+      "sourceName": "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router01"
+      ]
+    },
+    "/home/trbiv/eth/MEV/polygon_arbitrage/contracts/interfaces/IWrappedTokenGatewayV3.sol": {
+      "lastModificationDate": 1674103949249,
+      "contentHash": "accd24c796d36485ad886051812f6aa2",
+      "sourceName": "contracts/interfaces/IWrappedTokenGatewayV3.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "IWrappedTokenGatewayV3"
       ]
     }
   }
