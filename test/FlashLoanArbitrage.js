@@ -37,12 +37,15 @@ describe("FlashLoanArbitrage contract", function () {
 
         // fund the contract with matic
         console.log(`signer balance: ${await signer.getBalance()}`)
-        const fundAmount = ethers.utils.parseEther("0.00001")
-        console.log(`funding contract with: ${fundAmount}`)
-        await flashLoanArbitrage.deposit({value: fundAmount})
+        const amount = ethers.utils.parseEther("0.001")
         console.log('swapping matic for dai')
-        const swapAmount = ethers.utils.parseEther("0.00001")
-        expect (await flashLoanArbitrage.uniswapSwap(matic, dai, swapAmount)).to.be > 0;
+        const amountOut = await flashLoanArbitrage.uniswapSwap(matic, dai, amount, {gasLimit: 3e5})
+        console.log(`amount out: ${amountOut} dai`);
+        expect(amountOut).to.be > 0; 
+        console.log('repaying dai..');
+        amountOut = await flashLoanArbitrage.uniswapSwap(dai, matic, amountOut);
+        console.log(`amount out: ${amountOut} matic`);
+        expect(amountOut).to.be > 0;
     });
 
     it("should swap on sushiswap", async function () {

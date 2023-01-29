@@ -16,7 +16,7 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
     IPoolAddressesProvider public ADDRESSES_PROVIDER;
     ISwapRouter public immutable UNISWAP_SWAP_ROUTER;
     IUniswapV2Router02 public immutable SUSHISWAP_SWAP_ROUTER;
-    address public OWNER;
+    address private OWNER;
     address TOKEN0;
     address TOKEN1;
 
