@@ -65,10 +65,10 @@ contract FlashLoanArbitrage is IFlashLoanSimpleReceiver {
     function uniswapSwap(address _tokenIn, address _tokenOut, uint256 _amount) external returns (uint256 amountOut) {
 
         // transfer tokens to this contract
-        TransferHelper.safeTransfer(_tokenIn, address(this), _amount);
+        //TransferHelper.safeTransfer(_tokenIn, address(this), _amount); 
 
         // approve router to spend tokenIn
-        TransferHelper.safeApprove(_tokenIn, address(UNISWAP_SWAP_ROUTER), _amount);
+        //TransferHelper.safeApprove(_tokenIn, address(UNISWAP_SWAP_ROUTER), _amount);
 
         // TODO: use an oracle or other data source to choose a safer value for amountOutMinimum.
         ISwapRouter.ExactInputSingleParams memory params =

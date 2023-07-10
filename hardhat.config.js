@@ -9,17 +9,17 @@ module.exports = {
     networks: {
         hardhat: {
             forking: {
-                url: `https://polygon-mainnet.infura.io/v3/${process.env.WEB3_INFURA_PROJECT_ID}`,
+                url: process.env.POLYGON_MAINNET_RPC_URL,
             }
         },
         mumbai: {
             chainId: 80001,
-            url: `https://polygon-mumbai.infura.io/v3/${process.env.WEB3_INFURA_PROJECT_ID}`,
+            url: process.env.POLYGON_MUMBAI_RPC_URL,
             accounts: [process.env.DEV_PRIVATE_KEY]
         }
     },
     etherscan: {
-        apiKey: process.env.POLYGON_SCAN_API_KEY
+        apiKey: process.env.POLYGONSCAN_API_KEY
     }
 };
 
