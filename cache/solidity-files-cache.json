@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/trbiv/eth/MEV/polygon_arbitrage/contracts/FlashLoanArbitrage.sol": {
-      "lastModificationDate": 1674964719763,
-      "contentHash": "dc8bb0b1c19fc4aaf188f4d7c38ad53b",
+      "lastModificationDate": 1689025276371,
+      "contentHash": "e9972215925892e3c91cc9de2688f88f",
       "sourceName": "contracts/FlashLoanArbitrage.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -439,44 +439,6 @@
       ],
       "artifacts": [
         "IWrappedTokenGatewayV3"
-      ]
-    },
-    "/home/trbiv/eth/MEV/polygon_arbitrage/contracts/examples/UniswapExample.sol": {
-      "lastModificationDate": 1689019831863,
-      "contentHash": "4fe39262b320222f1f9f665999083048",
-      "sourceName": "contracts/examples/UniswapExample.sol",
-      "solcConfig": {
-        "version": "0.8.17",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
-        "@uniswap/lib/contracts/libraries/TransferHelper.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "UniswapExample"
       ]
     },
     "/home/trbiv/eth/MEV/polygon_arbitrage/node_modules/@uniswap/lib/contracts/libraries/TransferHelper.sol": {
